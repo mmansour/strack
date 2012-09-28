@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}Social Tracker List{% endblock %}
+
+{% comment %}{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}{% endcomment %}
+
+{% block meta_description %}{% metablock %}
+This page tracks social data for maker channels
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+Social Tracker List
+{% endblock %}
+
+{% block main %}
+    I will be listing out all these things for the fun of it.
+    <ul>
+    {% for y in t_list %}
+        <li>{{ y.title }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
