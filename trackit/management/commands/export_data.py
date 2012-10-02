@@ -12,7 +12,8 @@ class Command(BaseCommand):
     help = 'Import local data to production'
     def handle(self, *args, **options):
 
-        reader = csv.reader(open('/users/mattmansour/django/sites/dev/socialtracker/docs/social-tracker-raw-data.csv', 'rU'), delimiter=',')
+#        reader = csv.reader(open('/users/mattmansour/django/sites/dev/socialtracker/docs/social-tracker-raw-data.csv', 'rU'), delimiter=',')
+        reader = csv.reader(open('/home/mattym/webapps/socialtracker/docs/social-tracker-raw-data.csv', 'rU'), delimiter=',')
         #col[2] title user
         #col[3] slug
         #col[4] site id
