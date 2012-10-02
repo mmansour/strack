@@ -103,7 +103,7 @@ $(function() {
 
 <footer>
 <div class="container">
-{% page_menu "pages/menus/footer.html" %}
+{% page_menu "pages/menus/footer.html" %}{% comment %}
 <br style="clear:both">
 <p>
     {% trans "Powered by" %}
@@ -117,7 +117,7 @@ $(function() {
     <span class="separator">|</span>
     <a href="{% url set_device "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
     {% endif %}
-</p>
+</p>{% endcomment %}
 </div>
 </footer>
 
