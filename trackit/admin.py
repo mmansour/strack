@@ -14,12 +14,13 @@ class YoutuberAdmin(DisplayableAdmin):
         ("Twitter Data",            {'fields': ['twitter_followers', 'twitter_url', 'twitter_error']}),
     ]
 
-    list_display = ('title', 'status', 'publish_date', 'facebook_likes', 'facebook_url',
-                    'facebook_error', 'twitter_followers', 'twitter_url', 'twitter_error')
-    list_editable = ('status',)
+    list_display = ('title', 'status', 'facebook_likes', 'twitter_followers', 'facebook_url',
+                    'twitter_url', 'facebook_error',  'twitter_error')
+    list_editable = ('status', 'facebook_url',
+                    'facebook_error', 'twitter_url', 'twitter_error')
     list_filter = ['status', 'publish_date','title','facebook_likes','facebook_url',
                    'twitter_followers', 'twitter_url','facebook_error','twitter_error']
-    search_fields = ['title',]
+    search_fields = ['title','facebook_url', 'twitter_url']
     date_hierarchy = 'publish_date'
 
 admin.site.register(Youtuber, YoutuberAdmin)
