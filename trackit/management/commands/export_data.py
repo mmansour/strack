@@ -31,7 +31,7 @@ class Command(BaseCommand):
         for col in reader:
             obj, created = Youtuber.objects.get_or_create(title=col[2],
                                                           slug=col[3],
-                                                          site_id=col[4],
+                                                          site_id=int(col[4]),
                                                           publish_date=datetime.datetime.now(),
                                                           youtube_channel=col[11],
                                                           facebook_likes=col[12],
