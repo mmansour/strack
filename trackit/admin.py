@@ -14,9 +14,9 @@ class YoutuberAdmin(DisplayableAdmin):
         ("Twitter Data",            {'fields': ['twitter_followers', 'twitter_url', 'twitter_error']}),
     ]
 
-    list_display = ('title', 'status', 'facebook_likes', 'twitter_followers', 'facebook_url',
-                    'twitter_url', 'facebook_error',  'twitter_error')
-    list_editable = ('status', 'facebook_url',
+    list_display = ('title', 'facebook_url', 'twitter_url', 'youtube_channel',
+                    'facebook_likes', 'twitter_followers', 'facebook_error',  'twitter_error', 'status',)
+    list_editable = ('status', 'facebook_url', 'youtube_channel',
                     'facebook_error', 'twitter_url', 'twitter_error')
     list_filter = ['status', 'publish_date','title','facebook_likes','facebook_url',
                    'twitter_followers', 'twitter_url','facebook_error','twitter_error']
