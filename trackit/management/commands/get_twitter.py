@@ -14,7 +14,7 @@ class Command(BaseCommand):
             twitterdb = Youtuber.objects.get(title=user.title)
             twiturl = user.twitter_url
             twitcleanurl = twiturl.replace('www.','').replace('#!/','')
-            twitpage=urllib2.urlopen(twitcleanurl)
+            twitpage=urllib2.urlopen(str(twitcleanurl))
             twitsoup=BeautifulSoup(twitpage.read())
             twitsocialdata=twitsoup.findAll('a',{'data-nav':'followers'})
 #               print k, twitsociallink[0].findAll(text=True)[1], twitsociallink[0].findAll(text=True)[2]
@@ -22,6 +22,6 @@ class Command(BaseCommand):
             twitsorteddata = sorted(twitfollowers)
             twitterdb.twitter_followers = twitsorteddata[0][1]
             twitterdb.save()
-#            print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], user.twitter_url)
+            print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], user.twitter_url)
         print 'Done Pulling Twitter Followers'
 

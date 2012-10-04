@@ -13,7 +13,7 @@ class Command(BaseCommand):
         for user in yt:
             time.sleep(1)
             fburldb = Youtuber.objects.get(title=user.title)
-            fbpage=urllib2.urlopen(user.facebook_url)
+            fbpage=urllib2.urlopen(str(user.facebook_url))
             fbsoup=BeautifulSoup(fbpage.read())
             fbsociallink=fbsoup.findAll('meta',{'name':'description'})
             fbdigitlist = [s for s in fbsociallink[0]['content'].split()
