@@ -22,6 +22,6 @@ class Command(BaseCommand):
             twitsorteddata = sorted(twitfollowers)
             twitterdb.twitter_followers = twitsorteddata[0][1]
             twitterdb.save()
-            print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], user.twitter_url)
+#            print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], user.twitter_url)
         print 'Done Pulling Twitter Followers'
 

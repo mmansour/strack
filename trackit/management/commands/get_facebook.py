@@ -21,7 +21,7 @@ class Command(BaseCommand):
 #                        print k, fbdigitlist, fbsociallink[0]['content']
             fburldb.facebook_likes = fbdigitlist[0]
             fburldb.save()
-            print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], user.facebook_url)
+#            print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], user.facebook_url)
         print 'Done pulling Facebook Likes'
 
 
