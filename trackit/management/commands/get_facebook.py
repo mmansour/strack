@@ -36,6 +36,10 @@ class Command(BaseCommand):
                 fburldb.facebook_error = 'FB Page not found: {0}'.format(e)
                 fburldb.save()
                 print 'User: {0}, FB Page not found: {1}'.format(user.title, e)
+            except urllib2.URLError, e:
+                fburldb.facebook_error = 'URL Error: {0}'.format(e)
+                fburldb.save()
+                print 'User: {0}, URL Error: {1}'.format(user.title, e)
 
         print 'Done pulling Facebook Likes'
 
