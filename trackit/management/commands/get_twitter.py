@@ -39,6 +39,10 @@ class Command(BaseCommand):
                 twitterdb.twitter_error = 'URL Error: {0}'.format(e)
                 twitterdb.save()
                 print 'User: {0}, URL Error: {1}'.format(user.title, e)
+            except UnicodeEncodeError, e:
+                twitterdb.twitter_error = 'Weird characters in url: {0}'.format(e)
+                twitterdb.save()
+                print 'Weird characters in url: {0}'.format(e)
 
                 
         print 'Done Pulling Twitter Followers'

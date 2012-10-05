@@ -40,6 +40,12 @@ class Command(BaseCommand):
                 fburldb.facebook_error = 'URL Error: {0}'.format(e)
                 fburldb.save()
                 print 'User: {0}, URL Error: {1}'.format(user.title, e)
+            except UnicodeEncodeError, e:
+                fburldb.facebook_error = 'Weird characters in url: {0}'.format(e)
+                fburldb.save()
+                print 'Weird characters in url: {0}'.format(e)
+
+
 
         print 'Done pulling Facebook Likes'
 
