@@ -9,7 +9,9 @@ class Command(BaseCommand):
     help = 'Get all Twitter Followers'
     def handle(self, *args, **options):
 
-        yt = Youtuber.objects.exclude(twitter_url__isnull=True).exclude(twitter_url__exact='')
+        yt = Youtuber.objects.exclude(twitter_url__isnull=True)\
+            .exclude(twitter_url__exact='')\
+            .exclude(twitter_error__isnull=False)
 
         for user in yt:
             time.sleep(1)
