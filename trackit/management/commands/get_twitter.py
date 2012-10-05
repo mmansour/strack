@@ -14,6 +14,7 @@ class Command(BaseCommand):
         for user in yt:
             time.sleep(1)
             if not user.twitter_error:
+
                 twitterdb = Youtuber.objects.get(title=user.title)
                 twiturl = user.twitter_url
                 twitcleanurl = twiturl.replace('www.','').replace('#!/','')
