@@ -3,6 +3,7 @@ from BeautifulSoup import BeautifulSoup
 from trackit.models import Youtuber
 import urllib2
 import time
+import httplib
 
 
 class Command(BaseCommand):
