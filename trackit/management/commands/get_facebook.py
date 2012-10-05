@@ -45,8 +45,6 @@ class Command(BaseCommand):
                 fburldb.save()
                 print 'Weird characters in url: {0}'.format(e)
 
-
-
         print 'Done pulling Facebook Likes'
 
 

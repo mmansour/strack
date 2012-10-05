@@ -31,6 +31,10 @@ class Command(BaseCommand):
                 twitterdb.save()
 
                 print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], twitcleanurl)
+            except IndexError, e:
+                twitterdb.twitter_error = 'Missing Followers: {0}'.format(e)
+                twitterdb.save()
+                print 'User: {0}, Missing Followers: {1}'.format(user.title, e)
             except urllib2.HTTPError, e:
                 twitterdb.twitter_error = 'FB Page not found: {0}'.format(e)
                 twitterdb.save()
