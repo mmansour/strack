@@ -26,8 +26,9 @@ class Command(BaseCommand):
 #               print k, twitsociallink[0].findAll(text=True)[1], twitsociallink[0].findAll(text=True)[2]
             twitfollowers = [f.findAll(text=True) for f in twitsocialdata]
             twitsorteddata = sorted(twitfollowers)
-#            twitterdb.twitter_followers = twitsorteddata[0][1]
-#            twitterdb.save()
+            twitterdb.twitter_followers = twitsorteddata[0][1]
+            twitterdb.save()
+            
             print 'User: {0}, Followers: {1} Url: {2}'.format(user.title, twitsorteddata[0][1], twitcleanurl)
         print 'Done Pulling Twitter Followers'
 
