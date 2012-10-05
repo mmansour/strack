@@ -47,6 +47,10 @@ class Command(BaseCommand):
                 twitterdb.twitter_error = 'Weird characters in url: {0}'.format(e)
                 twitterdb.save()
                 print 'Weird characters in url: {0}'.format(e)
+            except httplib.BadStatusLine, e:
+                twitterdb.twitter_error = 'Bad status line: {0}'.format(e)
+                twitterdb.save()
+                print 'Bad status line: {0}'.format(e)
 
                 
         print 'Done Pulling Twitter Followers'
