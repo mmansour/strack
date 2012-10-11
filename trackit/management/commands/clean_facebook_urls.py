@@ -24,8 +24,8 @@ class Command(BaseCommand):
             try:
                 fburldb.facebook_url = clean_url.lower()
                 print 'Clean fb url %s' % clean_url.lower()
-            except Exception, e:
-                print 'Error sanitizing URL'
+            except UnicodeEncodeError, e:
+                print 'Unicode error sanitizing URL'
             finally:
                 fburldb.save()
 

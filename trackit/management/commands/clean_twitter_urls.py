@@ -25,8 +25,8 @@ class Command(BaseCommand):
             try:
                 twitterdb.twitter_url = clean_url.lower()
                 print 'Clean twitter url %s' % clean_url.lower()
-            except Exception, e:
-                print 'Error cleaning twitter url %s' % e
+            except UnicodeEncodeError, e:
+                print 'Unicode error sanitizing URL'
             finally:
                 twitterdb.save()
         print 'Done Pulling Twitter Followers'
