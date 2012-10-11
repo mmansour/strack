@@ -10,54 +10,20 @@ class Command(BaseCommand):
 
         yt = Youtuber.objects.exclude(facebook_url__isnull=True).exclude(facebook_url__exact='')
         
-#        for user in yt:
-############ TEST URL CLEAN UP
-#            fburldb = Youtuber.objects.get(title=user.title)
-#
-#            if user.facebook_url[:4] != 'http':
-#                clean_url = 'http://{0}'.format(user.facebook_url)
-#            elif user.facebook_url[:5] == 'https':
-#                clean_url = user.facebook_url.replace('https','http')
-#            elif user.facebook_url[:11] == 'http://face':
-#                clean_url = user.facebook_url.replace('http://face','http://www.face')
-#            else:
-#                clean_url = user.facebook_url
-#
-#            print clean_url.lower()
-
         for user in yt:
 ############ THIS WORKS BUT CLEAN UP URLS
             time.sleep(1)
             fburldb = Youtuber.objects.get(title=user.title)
             try:
-#                if user.facebook_url[:4] != 'http':
-#                    clean_url = 'http://{0}'.format(user.facebook_url)
-#                else:
-#                    clean_url = user.facebook_url
-                clean_url = user.facebook_url.lower()
-
-                if user.facebook_url[:4] != 'http':
-                    clean_url = 'http://{0}'.format(user.facebook_url)
-                if user.facebook_url[:5] == 'https':
-                    clean_url = user.facebook_url.replace('https','http')
-                if user.facebook_url[:11] == 'http://face':
-                    clean_url = user.facebook_url.replace('http://face','http://www.face')
-
-                try:
-                    print 'Clean fb url %s' % clean_url
-                except UnicodeEncodeError, e:
-                    pass
-
-                fbpage=urllib2.urlopen(clean_url)
+                fbpage=urllib2.urlopen(user.facebook_url)
                 fbsoup=BeautifulSoup(fbpage.read())
                 fbsociallink=fbsoup.findAll('meta',{'name':'description'})
                 fbdigitlist = [s for s in fbsociallink[0]['content'].split()
                                     if s.replace(",","").isdigit()]
     #                        print k, fbdigitlist, fbsociallink[0]['content']
                 fburldb.facebook_likes = fbdigitlist[0]
-                fburldb.facebook_url = clean_url
                 fburldb.save()
-                print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], clean_url)
+                print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], user.facebook_url)
             except IndexError, e:
                 fburldb.facebook_error = 'Missing Likes: {0}'.format(e)
                 fburldb.save()
