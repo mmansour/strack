@@ -15,11 +15,11 @@ class Command(BaseCommand):
             fburldb = Youtuber.objects.get(title=user.title)
             try:
                 clean_url = user.facebook_url
-                if user.facebook_url[:4] != 'http':
+                if str(user.facebook_url[:4]) != 'http':
                     clean_url = 'http://{0}'.format(user.facebook_url)
-                if user.facebook_url[:5] == 'https':
+                if str(user.facebook_url[:5]) == 'https':
                     clean_url = user.facebook_url.replace('https','http')
-                if user.facebook_url[:11] == 'http://face':
+                if str(user.facebook_url[:11]) == 'http://face':
                     clean_url = user.facebook_url.replace('http://face','http://www.face')
                 fburldb.facebook_url = clean_url.lower()
                 print 'Clean fb url %s' % clean_url.lower()
