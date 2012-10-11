@@ -57,7 +57,7 @@ class Command(BaseCommand):
                 fburldb.facebook_likes = fbdigitlist[0]
                 fburldb.facebook_url = sanitized_url
                 fburldb.save()
-                print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], clean_url)
+                print 'User: {0}, Likes: {1} Url: {2}'.format(user.title, fbdigitlist[0], sanitized_url)
             except IndexError, e:
                 fburldb.facebook_error = 'Missing Likes: {0}'.format(e)
                 fburldb.save()
