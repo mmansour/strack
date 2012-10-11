@@ -45,8 +45,10 @@ class Command(BaseCommand):
                     clean_url = user.facebook_url
 
                 sanitized_url = clean_url.lower()
-
-                print 'Clean fb url %s' % sanitized_url
+                try:
+                    print 'Clean fb url %s' % sanitized_url
+                except UnicodeEncodeError, e:
+                    pass
 
                 fbpage=urllib2.urlopen(sanitized_url)
                 fbsoup=BeautifulSoup(fbpage.read())
