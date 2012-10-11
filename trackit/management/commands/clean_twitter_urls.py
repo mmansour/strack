@@ -14,15 +14,12 @@ class Command(BaseCommand):
 
         for user in yt:
             twitterdb = Youtuber.objects.get(title=user.title)
-
-            clean_url = user.twitter_url.replace('www.','').replace('#!/','')
-
-            if user.twitter_url[:4] != 'http':
-                clean_url = 'http://{0}'.format(user.twitter_url)
-            if user.twitter_url[:5] == 'https':
-                clean_url = user.twitter_url.replace('https','http')
-
             try:
+                clean_url = user.twitter_url.replace('www.','').replace('#!/','')
+                if user.twitter_url[:4] != 'http':
+                    clean_url = 'http://{0}'.format(user.twitter_url)
+                if user.twitter_url[:5] == 'https':
+                    clean_url = user.twitter_url.replace('https','http')
                 twitterdb.twitter_url = clean_url.lower()
                 print 'Clean twitter url %s' % clean_url.lower()
             except UnicodeEncodeError, e:
