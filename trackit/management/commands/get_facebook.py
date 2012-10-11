@@ -8,7 +8,7 @@ class Command(BaseCommand):
     help = 'Get all facebook likes'
     def handle(self, *args, **options):
 
-        yt = Youtuber.objects.exclude(facebook_url__isnull=True).exclude(facebook_url__exact='')[:25]
+        yt = Youtuber.objects.exclude(facebook_url__isnull=True).exclude(facebook_url__exact='')
         clean_url = ""
         
 #        for user in yt:
@@ -46,7 +46,7 @@ class Command(BaseCommand):
 
                 sanitized_url = clean_url.lower()
 
-#                print 'Clean fb url %s' % sanitized_url
+                print 'Clean fb url %s' % sanitized_url
 
                 fbpage=urllib2.urlopen(sanitized_url)
                 fbsoup=BeautifulSoup(fbpage.read())
